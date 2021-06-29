@@ -7,14 +7,19 @@ option objc_class_prefix = "HLW";
 
 package com.magnoazneto;
 
-service CoroutineDemoServerService {
-  rpc send (CoroutineDemoServerRequest) returns (CoroutineDemoServerReply) {}
+service UserService {
+  rpc saveUser (SaveUserRequest) returns (UserResponse) {}
+  rpc saveUserStream(stream SaveUserRequest) returns (stream UserResponse) {}
 }
 
-message CoroutineDemoServerRequest {
+message SaveUserRequest {
   string name = 1;
+  string lastName = 2;
+  string document = 3;
 }
 
-message CoroutineDemoServerReply {
-  string message = 1;
+message UserResponse {
+  int32 id = 1;
+  string name = 2;
+  string lastName = 3;
 }
